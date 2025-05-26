@@ -1,0 +1,42 @@
+{
+  "name": "Test API with AI Evaluation",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://jsonplaceholder.typicode.com/posts/1",
+        "method": "GET"
+      },
+      "name": "Test API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://api-inference.huggingface.co/models/gpt2",
+        "method": "POST",
+        "headers": [
+          { "name": "Authorization", "value": "Bearer YOUR_HF_TOKEN" }
+        ],
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "inputs",
+              "value": "Evaluate this API response:\n\n{{ $json }}"
+            }
+          ]
+        }
+      },
+      "name": "AI Evaluator",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [450, 300]
+    }
+  ],
+  "connections": {
+    "Test API": {
+      "main": [[{ "node": "AI Evaluator", "type": "main", "index": 0 }]]
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "n8n-ai-testing",
+  "version": "1.0.0",
+  "description": "Proyek n8n lokal untuk automation testing dengan AI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "n8n",
+    "list": "n8n list:workflow"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "n8n": "^1.93.0"
+  }
+}
